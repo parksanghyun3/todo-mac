@@ -20,15 +20,10 @@ export default {
   props: ["propsdata"],
   methods: {
     removeTodo(todoItem, index) {
-      //localStorage에서 removeItem을 이용하여 todoItems의 값을 제거
-      localStorage.removeItem(todoItem.items);
-      this.items.splice(index, 1)
+      this.$emit("removeItem", todoItem, index);
     },
-    toggleComplete(todoItem){
-      // todoItem이 todoInput에서 false로 값이 할당이 되어있을때, 토글로 왔다갔다하게끔 false
-      todoItem.completed = !todoItem.completed;
-      localStorage.removeItem(todoItem);
-      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
+    toggleComplete(todoItem, index){
+     this.$emit("checkItem", todoItem, index);
     }
   },
 
