@@ -1,14 +1,10 @@
 <template>
   <div>
     <ul>
-      <!-- v-for는 각 아이템에 내부적으로 index를 부여한다. -->
-      <!-- 해당 아이템을 클릭 했을 때, index 인자값을 removeTodo 메서드에 연결한다. -->
-      <li v-for="(todoItem, index) in propsdata" :key = "todoItem.items">
-        <i class="fa-solid fa-check checkBtn" :class="{checkBtnCompleted: todoItem.completed}" @click="toggleComplete(todoItem, index)"></i>
-        <span v-bind:class="{checkBtnCompleted: todoItem.completed}">
-          {{ todoItem.items }}
+      <li v-for="todoitem in propsdata" v-bind:key="todoitem.item">
+        <span>
+          {{ todoitem.item }}
         </span>
-        <i class="fa-solid fa-trash-can removeBtn" @click="removeTodo(todoItem, index)"></i>
       </li>
     </ul>
   </div>
@@ -18,15 +14,6 @@
 /* eslint-disable */
 export default {
   props: ["propsdata"],
-  methods: {
-    removeTodo(todoItem, index) {
-      this.$emit("removeItem", todoItem, index);
-    },
-    toggleComplete(todoItem, index){
-     this.$emit("checkItem", todoItem, index);
-    }
-  },
-
 }
 </script>
 
