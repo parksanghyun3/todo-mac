@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul>
-      <li v-for="todoitem in propsdata" v-bind:key="todoitem.item">
+      <li v-for="(todoitem) in propsdata" v-bind:key="todoitem.item">
         <span>
           {{ todoitem.item }}
         </span>
@@ -17,7 +17,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped>  
   ul {list-style-type: none; padding-left: 0px; margin-top: 0; text-align: left;}
   li {display: flex; align-items: center; min-height: 50px; height: 50px; margin: 0.5rem 0; padding: 0 0.9rem; background: #fff; border-radius: 5px;}
   li span {width: 100%;}

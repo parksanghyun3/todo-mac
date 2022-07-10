@@ -26,11 +26,17 @@ export default {
   methods: {
     addInputData(newItem) {
       var obj = {
-        item: newItem 
+        check: false, item: newItem
       }
       localStorage.setItem(newItem, JSON.stringify(obj));
-      this.listItem.push(JSON.parse(localStorage.getItem(newItem)));
+      this.listItem.push(obj);
     },
+  },
+  created(){
+    for(var i = 0; i < localStorage.length; i++) {
+      var parsing = JSON.parse(localStorage.getItem(localStorage.key(i)));
+      this.listItem.push(parsing);
+    }
   },
   components: {
     "TodoHeader": TodoHeader,
